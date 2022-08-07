@@ -18,7 +18,7 @@ class NumeralsController extends Controller
     /**
      * @var NumeralsRepositoryInterface
      */
-    private NumeralsRepositoryInterface  $numeralsRepository;
+    private NumeralsRepositoryInterface $numeralsRepository;
     /**
      * @var ConversionTransformer
      */
@@ -29,8 +29,10 @@ class NumeralsController extends Controller
      * @param NumeralsRepositoryInterface $numeralsRepository
      * @param ConversionTransformer $conversionTransformer
      */
-    public function __construct(NumeralsRepositoryInterface $numeralsRepository, ConversionTransformer $conversionTransformer)
-    {
+    public function __construct(
+        NumeralsRepositoryInterface $numeralsRepository,
+        ConversionTransformer $conversionTransformer
+    ) {
         $this->numeralsRepository = $numeralsRepository;
         $this->conversionTransformer = $conversionTransformer;
     }
@@ -59,7 +61,12 @@ class NumeralsController extends Controller
     {
         $recentlyConverted = $this->numeralsRepository->getRecentConversions();
 
-        return $this->respondWithCollection($recentlyConverted, $this->conversionTransformer, true, HTTPResponse::HTTP_OK);
+        return $this->respondWithCollection(
+            $recentlyConverted,
+            $this->conversionTransformer,
+            true,
+            HTTPResponse::HTTP_OK
+        );
     }
 
     /**

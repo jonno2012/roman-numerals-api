@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Conversion extends Model
 {
-    protected $fillable = ['integer', 'numeral', 'count'];
-
     use HasFactory;
+
+    protected $fillable = ['integer', 'numeral', 'count'];
 }

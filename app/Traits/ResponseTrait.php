@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Traits;
 
 use Illuminate\Http\JsonResponse;
@@ -34,7 +33,7 @@ trait ResponseTrait
 
         $resources = new Collection($collection, $callback);
 
-        if(empty($collection)) {
+        if (empty($collection)) {
             $resources = new Collection($collection, $callback);
         }
 
