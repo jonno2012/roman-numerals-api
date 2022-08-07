@@ -3,17 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use App\Http\Controllers\Api\NumeralsController;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'prefix' => 'v1'
+], function() {
+    Route::put('/', [NumeralsController::class, 'convert'])->where(['integer' => '[0-9]+']);
+    Route::get('/recent', [NumeralsController::class, 'recentlyConverted']);
+    Route::get('/top-ten', [NumeralsController::class, 'topTen']);
 });
